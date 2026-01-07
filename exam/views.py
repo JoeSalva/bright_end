@@ -1,6 +1,15 @@
 from django.shortcuts import render
+from .models import Subject, Block, Options
 
 # Create your views here.
 
-def homepage(request):
-    return render(request, 'home.html')
+def landingpage(request):
+    return render(request, 'index.html')
+
+def control(request):
+    subject = Subject.objects.only('name', 'description')
+    return render(request, 'admin.html', {'subject': subject})
+
+def student(request):
+    return render(request, 'student.html')
+
